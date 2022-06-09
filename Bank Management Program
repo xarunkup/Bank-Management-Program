@@ -1,0 +1,64 @@
+data={}
+list1=["login","pd","Cusname","acNum","Bname","Mob","Amount"]
+import datetime
+def data_taken():
+    acc_num=int(input("Enter the account number:"))
+    for item in list1:
+        list2.append(input("Enter %s:"%item))
+        
+    data[acc_num]=dict(zip(list1,list2))
+    print(data)
+   
+    
+def other():
+    ch=int(input("1.Balance \n2.Withdraw \n3.Deposit \nEnter Choice"))
+    
+    if ch==1:
+        print("Available Balance",data[acc_num]["Amount"])
+        x=datetime.datetime.now()
+        print(x)
+        
+    elif ch==2:
+        amt=int(input("Enter the amount to withdraw"))
+        new_amt=int(data[acc_num]["Amount"])-amt
+        if new_amt<amt:
+            print("Amount is not sufficicent")
+        else:
+            #print("Amount is ok")
+            data[acc_num]["Amount"]=new_amt
+            print("Aval.Balance",data[acc_num]["Amount"])
+            x=datetime.datetime.now()
+            print(x)
+        
+        
+    elif ch==3:
+        amt=int(input("Enter the amount to deposit"))
+        new_amt=int(data[acc_num]["Amount"])+amt
+        data[acc_num]["Amount"]=new_amt
+        print("Aval.Balance",data[acc_num]["Amount"])
+        x=datetime.datetime.now()
+        print(x)
+        
+    else:
+        print("You entered wrong number... please enter the correct number")
+        
+
+list2=[]
+print("1.Create account \n2.Existing account \n3.Exit")
+ch=int(input("Enter the number:"))
+
+if ch==1:
+    data_taken()
+    
+elif ch==2:
+    acc_num=int(input("Enter the account number:"))
+    
+    if acc_num in data:
+        print("Record found")
+        other()
+        
+    else:
+        print("Not found")
+        
+else:
+    print("Wrong number you entered.. please Enter the correct number")
